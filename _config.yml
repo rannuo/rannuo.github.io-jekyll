@@ -13,14 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: balaman
+title: rannuo
 email: 2632119760@qq.com
 description: > # this means to ignore newlines until "baseurl:"
   powered by github and jekyll
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://balaman.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://rannuo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: ''
-github_username:  balaman
+github_username:  rannuo
 google_analytics: UA-104821745-1
 
 # Build settings
@@ -43,4 +43,4 @@ plugins:
 
 # disquc settings
 disquc: 
-  shortname: balaman
+  shortname: rannuo
