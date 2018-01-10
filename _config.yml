@@ -44,3 +44,5 @@ plugins:
 # disquc settings
 disquc: 
   shortname: rannuo
+
+theme: jekyll-theme-hacker
