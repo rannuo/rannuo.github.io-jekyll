@@ -24,4 +24,12 @@ JSONBig.parse(json) // { id: BigNumber { s: 1, e: 19, c: [ 251488, 4454554785849
 let json = '{"id": 25148844545547858495}'
 
 JSONBig.parse(json, (k, v) => v.isBigNumber ? v.toString() : v )
+// { id: '25148844545547858495' }
+```
+其他不是大数的值不受影响：
+```js
+let json = '{"id": 25148844545547858495, "littleNumber": 123}'
+
+JSONBig.parse(json, (k, v) => v.isBigNumber ? v.toString() : v )
+// { id: '25148844545547858495', littleNumber: 123}
 ```
