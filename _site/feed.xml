@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-03-23T00:14:36+08:00</updated><id>http://localhost:4000/</id><title type="html">rannuo</title><subtitle>powered by github and jekyll
+</subtitle><entry><title type="html">跨域问题详解</title><link href="http://localhost:4000/jekyll/update/2018/01/10/cross-origin.html" rel="alternate" type="text/html" title="跨域问题详解" /><published>2018-01-10T23:55:00+08:00</published><updated>2018-01-10T23:55:00+08:00</updated><id>http://localhost:4000/jekyll/update/2018/01/10/cross-origin</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/01/10/cross-origin.html">&lt;p&gt;作为一个前端，在工作中经常会遇到跨域的问题，&lt;/p&gt;
+
+&lt;h2 id=&quot;什么是跨域&quot;&gt;什么是跨域&lt;/h2&gt;
+
+&lt;p&gt;跨域的正规叫法应该是跨源，跨源相对于同源来说，何谓同源，MDN定义：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果两个页面的&lt;strong&gt;协议&lt;/strong&gt;，&lt;strong&gt;端口&lt;/strong&gt;（如果有指定）和&lt;strong&gt;域名&lt;/strong&gt;都相同，则两个页面具有相同的源。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;子域名之间是不同源的。在一个页面中，发往另一个源的的请求就叫跨源（跨域，以下皆称跨域）。&lt;/p&gt;
+
+&lt;h2 id=&quot;为什么要跨域&quot;&gt;为什么要跨域&lt;/h2&gt;
+
+&lt;p&gt;做过服务端的都知道，一个http接口，是没有限制的，谁都可以访问，但是浏览器出于安全考虑，限制了跨域的请求。&lt;/p&gt;
+
+&lt;p&gt;普通情况下，用 XHR 对象请求一个跨域的接口浏览器会直接抛出一个错误：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/xhr-cross-origin-error.png&quot; alt=&quot;xhr跨域请求的错误&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其实此时server是正常收到请求，并正常返回：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/cross-origin-succ.png&quot; alt=&quot;后台正常&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;用 fetch 结果也一样&lt;/p&gt;
+
+&lt;h2 id=&quot;如何解决跨域问题&quot;&gt;如何解决跨域问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;1jsonp&quot;&gt;1.jsonp&lt;/h3&gt;
+
+&lt;p&gt;jsonp 就是利用script标签的可跨域请求脚本来实现的
+在浏览器中添加一个script标签，请求跨域的服务器上的一个接口，一般可以自定义一个callback的参数，&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/jsonp-client.png&quot; alt=&quot;浏览器jsonp&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;服务端这样写&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/jsonp-server.png&quot; alt=&quot;服务端jsonp&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2cors&quot;&gt;2.CORS&lt;/h3&gt;
+
+&lt;p&gt;服务端在响应的头里指定这个字段 &lt;code class=&quot;highlighter-rouge&quot;&gt;Access-Control-Allow-Origin&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/cors-server.png&quot; alt=&quot;服务端cors&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;则客户端通过fetch或xhr对象请求，就可以拿到请求返回的资源了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/rannuo/images/master/blog/cors-fetch.png&quot; alt=&quot;fetch-cors&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;详见mdn&quot;&gt;详见MDN&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS&quot;&gt;CORS&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">作为一个前端，在工作中经常会遇到跨域的问题，</summary></entry><entry><title type="html">js, json 中处理大数</title><link href="http://localhost:4000/jekyll/update/2018/01/10/bigNumber.html" rel="alternate" type="text/html" title="js, json 中处理大数" /><published>2018-01-10T23:55:00+08:00</published><updated>2018-01-10T23:55:00+08:00</updated><id>http://localhost:4000/jekyll/update/2018/01/10/bigNumber</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/01/10/bigNumber.html">&lt;p&gt;在 js 中处理较大型数字，经常会遇到精确度不够的问题，&lt;a href=&quot;http://mikemcl.github.io/big.js/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;big.js&lt;/code&gt;&lt;/a&gt; 这个库就是为了解决js中大数的问题。&lt;/p&gt;
+
+&lt;p&gt;如果在一段 json 中，如果包含了较大的数，那么在用 &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.parse&lt;/code&gt; 解析的时候就会丧失精度，比如&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;id&quot;: 25148844545547858495}'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// { id: 25148844545547858000 }&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这时可用一个基于 &lt;code class=&quot;highlighter-rouge&quot;&gt;big.js&lt;/code&gt; 的库 &lt;code class=&quot;highlighter-rouge&quot;&gt;json-bigint&lt;/code&gt; 来解决这个问题：&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;id&quot;: 25148844545547858495}'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;JSONBig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// { id: BigNumber { s: 1, e: 19, c: [ 251488, 44545547858495 ] } }&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;可以通过传入一个函数把这个 &lt;code class=&quot;highlighter-rouge&quot;&gt;BigNumber&lt;/code&gt; 转成字符串：&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;id&quot;: 25148844545547858495}'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;JSONBig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isBigNumber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// { id: '25148844545547858495' }&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;其他不是大数的值不受影响：&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{&quot;id&quot;: 25148844545547858495, &quot;littleNumber&quot;: 123}'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;JSONBig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isBigNumber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// { id: '25148844545547858495', littleNumber: 123}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">在 js 中处理较大型数字，经常会遇到精确度不够的问题，big.js 这个库就是为了解决js中大数的问题。</summary></entry><entry><title type="html">有用的伪类 :focus-within</title><link href="http://localhost:4000/jekyll/update/2018/01/10/focus-within.html" rel="alternate" type="text/html" title="有用的伪类 :focus-within" /><published>2018-01-10T23:55:00+08:00</published><updated>2018-01-10T23:55:00+08:00</updated><id>http://localhost:4000/jekyll/update/2018/01/10/focus-within</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/01/10/focus-within.html">&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:focus-within&lt;/code&gt; 表示一个元素获得焦点，或，该元素包含了另一个获得焦点的元素&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">:focus-within 表示一个元素获得焦点，或，该元素包含了另一个获得焦点的元素</summary></entry><entry><title type="html">Puer Css Tab</title><link href="http://localhost:4000/2017/08/17/puer-css-tab.html" rel="alternate" type="text/html" title="Puer Css Tab" /><published>2017-08-17T00:00:00+08:00</published><updated>2017-08-17T00:00:00+08:00</updated><id>http://localhost:4000/2017/08/17/puer-css-tab</id><content type="html" xml:base="http://localhost:4000/2017/08/17/puer-css-tab.html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;Puer css tab&lt;/title&gt;
+	&lt;style&gt;
+		body{
+		  padding-top: 50px;
+		  font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
+		  font-size: 14px;
+		  line-height: 1.42857143;
+		  color: #333;
+		  background-color: #fff;
+		}
+		.tabs{
+		  display: block;
+		  position: relative;
+		  left: 50%;
+		  top: 50%;
+		  transform: translate(-50%, -50%);
+		  width: 90%;
+		  max-width: 720px;
+		  height: 40px;
+		  border-radius: 4px;
+		}
+		.tab-input{
+		  display: block;
+		  position: absolute;
+		  width: 33.333%;
+		  height: 100%;
+		  margin: 0;
+		  opacity: 0;
+		  z-index: 6;
+		  cursor:pointer;
+		}
+		.tab-input2{
+		  left: 33.333%;
+		}
+		.tab-input3{
+		  left: 66.666%;
+		}
+		.tab-btn{
+		  display: block;
+		  position: absolute;
+		  width: 33.333%;
+		  height: 100%;
+		  background: #f8f8f8;
+		  border: 1px solid #e7e7e7;
+		  -webkit-box-sizing: border-box;
+		  -moz-box-sizing: border-box;
+		  box-sizing: border-box;
+		  text-align: center;
+		  vertical-align: middle;
+		}
+		.tab-btn2{
+		  left: 33.333%;
+		  border-left: none;
+		}
+		.tab-btn3{
+		  left: 66.666%;
+		  border-left: none;
+		}
+		.tab-input:checked + .tab-btn{
+		  background: #e7e7e7;
+		}
+		.tabs&gt;input:first-child+.tab-btn{
+		  border-radius: 4px 0 0 4px;
+		}
+		.tabs&gt;.tab-btn:last-child{
+		  border-radius: 0 4px 4px 0;
+		}
+		.tab-btn a{
+		  display: block;
+		  position: relative;
+		  top: 50%;
+		  transform: translateY(-50%);
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h2&gt;纯css实现的tab&lt;/h2&gt;
+	&lt;div class=&quot;tabs&quot;&gt;
+		&lt;input class=&quot;tab-input&quot; type=&quot;radio&quot; name=&quot;tab&quot; checked&gt;
+		&lt;b class=&quot;tab-btn&quot;&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/b&gt;
+		&lt;input class=&quot;tab-input tab-input2&quot; type=&quot;radio&quot; name=&quot;tab&quot; &gt;
+		&lt;b class=&quot;tab-btn tab-btn2&quot;&gt;&lt;a&gt;Link&lt;/a&gt;&lt;/b&gt;
+		&lt;input class=&quot;tab-input tab-input3&quot; type=&quot;radio&quot; name=&quot;tab&quot; &gt;
+		&lt;b class=&quot;tab-btn tab-btn3&quot; &gt;&lt;a&gt;About&lt;/a&gt;&lt;/b&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content><author><name></name></author><summary type="html">Puer css tab 纯css实现的tab Home Link About</summary></entry></feed>
